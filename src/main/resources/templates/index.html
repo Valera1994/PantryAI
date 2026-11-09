@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ВареВо!</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body>
+<h1>ВареВо!</h1>
+<p class="muted">Ваш список продуктов и нейро-рецепты на любой вкус!</p>
+
+<form id="productForm">
+    <h2>Добавить продукт</h2>
+
+    <input id="name" placeholder="Название"
+           required maxlength="100">
+
+    <input
+            id="quantity"
+            type="number"
+            min="1"
+            step="1"
+            placeholder="Количество"
+            required
+    >
+
+    <select id="unit" required>
+        <option value="шт.">Штуки</option>
+        <option value="г">Граммы</option>
+        <option value="кг">Килограммы</option>
+        <option value="мл">Миллилитры</option>
+        <option value="л">Литры</option>
+    </select>
+
+    <button type="submit">Добавить</button>
+    <p id="message" role="status"></p>
+</form>
+
+<h2>Мои продукты</h2>
+<div id="products">Загрузка...</div>
+
+
+
+<section>
+    <h2>Добавить продукты с помощью ИИ</h2>
+    <p>Напиши или надиктуй, какие продукты нужно добавить.</p>
+
+    <textarea
+            id="productCommand"
+            rows="3"
+            placeholder="Например: добавь литр молока, шесть яиц и 200 граммов сыра"
+            style="width: 100%; max-width: 500px;"
+    ></textarea>
+
+    <br>
+
+
+    <button
+            type="button"
+            class="voice-button"
+            onpointerdown="startVoiceInput('productCommand', 'productVoiceStatus', event)"
+            onpointerup="stopVoiceInput(event)"
+            onpointercancel="stopVoiceInput(event)"
+            onlostpointercapture="stopVoiceInput(event)"
+            oncontextmenu="event.preventDefault()"
+    >
+        🎙️ Удерживай, чтобы говорить
+    </button>
+
+    <p id="productVoiceStatus"></p>
+
+
+    <br>
+
+    <button type="button" onclick="parseProductCommand()">
+        Разобрать команду
+    </button>
+
+    <p id="commandStatus"></p>
+    <div id="parsedProducts"></div>
+
+    <button type="button"
+            id="saveCommandProducts"
+            onclick="saveCommandProducts()"
+            hidden
+    >
+        Подтвердить и сохранить
+    </button>
+</section>
+
+
+<section class="recipe-section">
+    <h2>Рецепт из моих продуктов</h2>
+
+    <label for="dishType">Какое блюдо приготовить?</label>
+    <select id="dishType">
+        <option value="">Любое блюдо</option>
+        <option value="суп">Суп</option>
+        <option value="салат">Салат</option>
+        <option value="основное блюдо">Основное блюдо</option>
+        <option value="закуска">Закуска</option>
+        <option value="десерт">Десерт</option>
+    </select>
+
+    <label for="cuisine">Кухня какой страны?</label>
+    <select id="cuisine">
+        <option value="">Любая кухня</option>
+        <option value="итальянская">Итальянская</option>
+        <option value="грузинская">Грузинская</option>
+        <option value="азиатская">Азиатская</option>
+        <option value="мексиканская">Мексиканская</option>
+        <option value="французская">Французская</option>
+        <option value="русская">Русская</option>
+        <option value="индийская">Индийская</option>
+    </select>
+
+
+    <section>
+        <label for="preferences">Дополнительные пожелания</label>
+
+        <textarea
+                id="preferences"
+                rows="4"
+                maxlength="500"
+                placeholder="Например: без острого, приготовить за 20 минут, на 2 порции..."
+                style="width: 100%; max-width: 500px;"
+        ></textarea>
+
+        <br>
+
+
+        <button
+                type="button"
+                class="voice-button"
+                onpointerdown="startVoiceInput('preferences', 'preferencesVoiceStatus', event)"
+                onpointerup="stopVoiceInput(event)"
+                onpointercancel="stopVoiceInput(event)"
+                onlostpointercapture="stopVoiceInput(event)"
+                oncontextmenu="event.preventDefault()"
+        >
+            🎙️ Удерживай, чтобы диктовать пожелания
+        </button>
+
+        <p id="preferencesVoiceStatus"></p>
+
+    </section>
+
+
+    <button type="button" id="recipeButton">
+        Предложить рецепт
+    </button>
+
+
+    <div id="recipe-loading" class="recipe-loading" hidden>
+        <div class="recipe-chef">
+            <img
+                    src="/pantryai_chibi_chef.png"
+                    alt="Чибик-повар готовит рецепт"
+            />
+        </div>
+
+        <h3>ИИ готовит рецепт...</h3>
+        <p>Подбираем вкусные сочетания 🥘</p>
+
+        <div class="cooking-dots" aria-label="Загрузка">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+
+
+    <p id="recipeMessage" role="status"></p>
+    <div id="recipeResult"></div>
+</section>
+
+<script th:src="@{/script.js}"></script>
+</body>
+</html>
