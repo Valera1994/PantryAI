@@ -203,25 +203,25 @@ PantryAI/
 
 ### 8.1. Главная страница приложения
 
-![Главная страница PantryAI](screenshots/main-page.png)
+<img width="797" height="1072" alt="image" src="https://github.com/user-attachments/assets/456f1372-d297-4083-8ee3-84e5ea01c4cb" />
 
 ### 8.2. Список продуктов
 
-![Список продуктов](screenshots/products.png)
+<img width="883" height="885" alt="image" src="https://github.com/user-attachments/assets/219f40e0-1aa1-42cb-ae1c-30fd2d03c0d9" />
 
 ### 8.3. Добавление продукта с помощью текстовой команды
 
-![Обработка текстовой команды](screenshots/product-command.png)
+<img width="683" height="646" alt="image" src="https://github.com/user-attachments/assets/b599c05b-a4b6-4a8b-815a-4a5598f99b1a" />
 
 ### 8.4. Генерация рецепта
 
-![Генерация рецепта](screenshots/recipe-generation.png)
+<img width="847" height="1003" alt="image" src="https://github.com/user-attachments/assets/135aba59-9d7f-4a5b-980e-1a1a919d4ad6" />
+<img width="443" height="608" alt="image" src="https://github.com/user-attachments/assets/51fbebe9-1645-4b1d-8dd0-9ede5176b01c" />
+
 
 ### 8.5. Результат генерации рецепта
 
-![Результат генерации рецепта](screenshots/recipe-result.png)
-
-*Примечание: изображения необходимо разместить в папке `screenshots` в корне репозитория.*
+<img width="902" height="1006" alt="image" src="https://github.com/user-attachments/assets/8818cc1c-7b7d-479f-b73a-8fa49e8d3194" />
 
 ## 9. Количественные характеристики проекта
 
